@@ -1,0 +1,180 @@
+{% extends "layout.html" %}
+{% block body %}
+        <!-- Page Header-->
+        <header class="masthead" style="background-size: fill; background-image: url('{{url_for('static',filename='assets/img/home1.webp')}}')">
+            <div class="container position-relative px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        <div class="site-heading">
+                            <h2 style="color: rgb(255, 255, 255);font-size: 3.2rem; text-align: center; margin-bottom: 125px;">Kalaburagi Airport</h2>
+                            <span class="subheading"></span>
+                        </div>
+                    </div>
+                </div> 
+            </div>
+        </header>
+
+        <!-- Main Content-->
+        <!-- <div class="dropup">
+            <button class="dropbtn">Select Airport</button>
+            <div class="dropup-content">
+              <a>DXB</a> -->
+              <!-- <div class="dropup-sub-content1">
+                <a name="dxb">Arrival</a>
+                <a name="dxb">Departure</a> -->
+                <!-- <form>
+                    <input type="radio" name="airport" value="1">Arrival
+                    <input type="radio" name="airport" value="2">Departure
+                </form>
+              </div> -->
+              <!-- <a>HYD</a>
+              <div class="dropup-sub-content2">
+                <a name="hyd" value="1">Arrival</a>
+                <a name="hyd" value="0">Departure</a>
+              </div>
+            </div>
+          </div> -->
+          
+          <div style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;" >
+              <form action="/" method="post" class="form-first">
+              <!-- <form action="/redirect" method="post"> -->
+                  
+              <div class="dropup">
+                  <button class="dropbtn" name="gbiarrhtml" value="0" style="border-radius: 6px;font-size: 1.2rem;margin-left: 200px;">Arrival</button>
+                  <div class="dropup-content" >
+                      <!-- <form action="/redirect" method="post"> -->
+                          <!-- <a><input type="radio" name="airport" value="1">DXB</a>
+                          <a><input type="radio" name="airport" value="0">HYD</a> -->
+                      <!-- </form> -->
+                  </div>
+              </div>
+      
+              <div class="dropup">
+                  <button class="dropbtn" name="gbidephtml" value="1" style="border-radius: 6px;font-size: 1.2rem; margin-right: 100px;">Departure</button>
+                  <div class="dropup-content" >
+                      <!-- <form action="/redirect" method="post"> -->
+                      <!-- <form class="dropup-sub-content1"> -->
+      <!--           
+                          <a><input type="radio" name="aircraft" value="1">Arrival</a>
+                          <a><input type="radio" name="aircraft" value="0">Departure</a> -->
+                      <!-- </form> -->
+                      <!-- </form> -->
+                  </div>
+              </div>
+      
+              <!-- <div class="dropup" style="background-color:white;">
+                      <button type="submit" style="background-color:white;" class="dropbtn-go" ></button>
+                  </div> -->
+              </form>
+          </div>
+
+        <!-- <form class="" action="data" method="post">
+            <input type="file" name="csvfile" value="Arrival">
+            <input type="submit" name="" value="Submit">
+        </form> -->
+        <form action="/redirect" method="post">
+                    <!-- <div > -->
+                    <!-- <div class="submit-class" id="form-second-submit"></div>
+                        <button type="submit" class="dropbtn">Submit</button>
+                    </div> -->
+                    <table style="margin-bottom: 400px;">
+                        <tr style="background-color: black; color: white;">
+                            {% for header in headers %}
+                            <th>{{ header }}</th>
+                            {% endfor %}
+                            <!-- <th>SNO</th>
+                            <th>DATE</th>
+                            <th>FLIGHTS</th>
+                            <th>AIRCRAFT</th>
+                            <th>STA</th>
+                            <th>STD</th>
+                            <th>FROM</th>
+                            <th>TO</th>
+                            <th>ATD</th>-->
+                            <!-- <th>PTA</th>  -->
+                        </tr>
+                        {% set  j = [1] %}
+                        {%for row in res %}
+                        <tr name="eachrow" value='{{j|length}}'>
+                            {% set i = [1] %}
+                            {% for key,cell in row.items() %}
+                            {%- if i|length%10 != 2 %}
+                            <td>{{cell}}</td>
+                            {% endif -%}
+                            {%- if i|length%10 == 2 %}
+                            <td><input placeholder="{{cell}}" name="insubmitcontent{{j|length}}"  onclick="SubmitEvent"><button id="atd-button" name="insubmit" value="{{j|length}}" type="submit">check</button></td>
+                            <!-- <td><div contenteditable name="insubmitcontent"> {{cell}}<button id="atd-button" name="insubmit" value="{{j|length}}" type="submit">check</button></div></td> -->
+                            {% endif %}
+                            {%  set i = i.append(1) %}
+                            {%endfor%}
+                        </tr>
+                        {% set j = j.append(1) %}
+                        {%endfor%}
+                    </table>
+                <!-- </div> -->
+            </form>
+
+<!-- 
+        <div class="container px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5 justify-content-center">
+                <div class="col-md-10 col-lg-8 col-xl-7">
+                    {% for post in posts %}
+                    <div class="post-preview">
+                        <a href="/post/{{post.slug}}">
+                            <h2 class="post-title">{{post.title}}</h2>
+                            </a>
+                        <p class="post-meta">
+                            Posted by
+                            <a href="#!">Admin</a>
+                            on {{post.date}}
+                        </p>
+                    </div>
+
+                    {{post.content}}
+                    {%endfor%}
+                    <hr class="my-4" />
+                    <div class="post-preview">
+                        <a href="post.html"><h2 class="post-title">I believe every human has a finite number of heartbeats. I don't intend to waste any of mine.</h2></a>
+                        <p class="post-meta">
+                            Posted by
+                            <a href="#!">Start Bootstrap</a>
+                            on September 18, 2022
+                        </p>
+                    </div>
+                    <hr class="my-4" />
+                    <div class="post-preview">
+                        <a href="post.html">
+                            <h2 class="post-title">Science has not yet mastered prophecy</h2>
+                            <h3 class="post-subtitle">We predict too much for the next year and yet far too little for the next ten.</h3>
+                        </a>
+                        <p class="post-meta">
+                            Posted by
+                            <a href="#!">Start Bootstrap</a>
+                            on August 24, 2022
+                        </p>
+                    </div>
+                    <hr class="my-4" />
+                    <div class="post-preview">
+                        <a href="post.html">
+                            <h2 class="post-title">Failure is not an option</h2>
+                            <h3 class="post-subtitle">Many say exploration is part of our destiny, but it’s actually our duty to future generations.</h3>
+                        </a>
+                        <p class="post-meta">
+                            Posted by
+                            <a href="#!">Start Bootstrap</a>
+                            on July 8, 2022
+                        </p>
+                    </div>
+                    <hr class="my-4" />
+                    <div class="d-flex justify-content-end mb-4"><a class="btn btn-primary text-uppercase" href="#!">Older Posts →</a></div>
+                </div>
+            </div>
+        </div> -->
+
+
+
+        <script>
+            
+        </script>
+
+        {% endblock %}

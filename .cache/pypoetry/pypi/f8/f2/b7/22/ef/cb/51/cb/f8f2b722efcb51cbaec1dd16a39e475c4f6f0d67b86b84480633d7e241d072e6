@@ -1,0 +1,1 @@
+9999999999{"name": "grpcio-status", "version": "1.48.2", "summary": "Status proto mapping for gRPC", "platform": null, "requires_dist": ["protobuf (>=3.12.0)", "grpcio (>=1.48.2)", "googleapis-common-protos (>=1.5.5)"], "requires_python": ">=3.6", "files": [], "_cache_version": "1.0.0"}

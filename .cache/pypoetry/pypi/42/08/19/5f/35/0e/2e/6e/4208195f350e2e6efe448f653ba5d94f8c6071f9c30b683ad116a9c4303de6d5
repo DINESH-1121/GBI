@@ -1,0 +1,1 @@
+9999999999{"name": "google-crc32c", "version": "1.5.0", "summary": "A python wrapper of the C library 'Google CRC32C'", "platform": "Posix", "requires_dist": ["pytest ; extra == 'testing'"], "requires_python": ">=3.7", "files": [], "_cache_version": "1.0.0"}

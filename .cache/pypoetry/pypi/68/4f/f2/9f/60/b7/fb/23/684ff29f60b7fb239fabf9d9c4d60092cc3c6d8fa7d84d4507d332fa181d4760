@@ -1,0 +1,1 @@
+9999999999{"name": "proto-plus", "version": "1.22.2", "summary": "Beautiful, Pythonic protocol buffers.", "platform": "Posix; MacOS X", "requires_dist": ["protobuf (<5.0.0dev,>=3.19.0)", "google-api-core[grpc] (>=1.31.5) ; extra == 'testing'"], "requires_python": ">=3.6", "files": [], "_cache_version": "1.0.0"}
